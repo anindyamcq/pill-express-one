@@ -34,9 +34,9 @@
     }
 
     .app-shell {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 1.5rem 1.25rem 3rem;
+      padding: 1.25rem 1.25rem 3rem;
     }
 
     /* HEADER */
@@ -45,7 +45,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 1.5rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     .brand {
@@ -81,7 +81,7 @@
     }
 
     .brand-text h1 {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 700;
       letter-spacing: 0.02em;
       color: var(--primary-dark);
@@ -93,7 +93,7 @@
     .brand-text h1 span {
       font-weight: 600;
       color: var(--accent);
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
 
     .tagline {
@@ -103,14 +103,49 @@
     }
 
     .header-actions {
+      flex: 1;
       display: flex;
       align-items: center;
       gap: 0.75rem;
+      justify-content: flex-end;
       font-size: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .global-search {
+      flex: 1;
+      max-width: 380px;
+      position: relative;
+    }
+
+    .global-search input {
+      width: 100%;
+      padding: 0.6rem 0.9rem 0.6rem 2.2rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 0.85rem;
+      outline: none;
+      background: rgba(248, 250, 252, 0.95);
+      transition: all 0.2s ease;
+    }
+
+    .global-search input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+      background: #ffffff;
+    }
+
+    .global-search-icon {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.9rem;
+      opacity: 0.65;
     }
 
     .pill-badge {
-      background: rgba(16, 185, 129, 0.1);
+      background: rgba(16, 185, 129, 0.12);
       color: #047857;
       padding: 0.45rem 0.9rem;
       border-radius: 999px;
@@ -118,6 +153,7 @@
       display: flex;
       align-items: center;
       gap: 0.35rem;
+      white-space: nowrap;
     }
 
     .pill-badge-dot {
@@ -128,40 +164,42 @@
       box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.35);
     }
 
+    .header-mini {
+      font-size: 0.75rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .header-actions {
+        justify-content: flex-start;
+      }
+      .global-search {
+        max-width: 100%;
+      }
+    }
+
     /* HERO */
     .hero {
       display: grid;
-      gap: 1.75rem;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 1.5rem;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.1fr);
       align-items: center;
-      margin-bottom: 2.2rem;
+      margin-bottom: 1.6rem;
     }
 
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: minmax(0, 1fr);
       }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
     }
 
-    .hero-copy-title {
-      font-size: 2rem;
-      line-height: 1.15;
-      margin-bottom: 0.75rem;
-      color: var(--primary-dark);
-    }
-
-    .hero-copy-title span {
-      color: var(--accent);
-    }
-
-    .hero-sub {
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin-bottom: 1.1rem;
+    .hero-left {
+      position: relative;
     }
 
     .hero-tagline-chip {
@@ -193,15 +231,307 @@
       font-weight: 700;
     }
 
-    /* SEARCH CARD */
-    .search-card {
-      background: rgba(255, 255, 255, 0.92);
+    .hero-copy-title {
+      font-size: 2.1rem;
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+      color: var(--primary-dark);
+    }
+
+    .hero-copy-title span {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.9rem;
+      font-size: 0.75rem;
+    }
+
+    .hero-badge {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      color: #1d4ed8;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .hero-badge.secondary {
+      background: rgba(16, 185, 129, 0.1);
+      color: #047857;
+    }
+
+    .hero-badge span.icon {
+      font-size: 0.9rem;
+    }
+
+    .hero-right {
+      background: linear-gradient(145deg, #004f9e, #001c42);
       border-radius: var(--radius-lg);
-      padding: 1rem 1rem 1.15rem;
+      padding: 1.25rem 1.2rem;
+      color: #e5e7eb;
       box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(20px);
       position: relative;
       overflow: hidden;
+    }
+
+    .hero-side-pill {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: linear-gradient(135deg, #ff4b3a 0%, #ff7a3a 50%, #004f9e 51%, #0074d9 100%);
+      border-radius: 999px;
+      right: -90px;
+      bottom: -70px;
+      opacity: 0.18;
+      transform: rotate(-24deg);
+    }
+
+    .hero-side-card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-side-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      opacity: 0.9;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-side-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-side-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+      font-size: 0.8rem;
+      margin-top: 0.4rem;
+    }
+
+    .hero-stat {
+      background: rgba(15, 23, 42, 0.55);
+      border-radius: 1rem;
+      padding: 0.55rem 0.6rem;
+    }
+
+    .hero-stat-label {
+      font-size: 0.7rem;
+      opacity: 0.8;
+    }
+
+    .hero-stat-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-top: 0.15rem;
+    }
+
+    .upload-card {
+      margin-top: 0.5rem;
+      border-radius: 1rem;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      padding: 0.55rem 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+    }
+
+    .upload-card-text {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .upload-card-text span {
+      display: block;
+      font-weight: 500;
+      color: var(--primary-dark);
+    }
+
+    .upload-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #ff4b3a, #ff9f1c);
+      color: #ffffff;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(248, 113, 113, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .upload-btn span.icon {
+      font-size: 0.9rem;
+      margin-top: -1px;
+    }
+
+    /* MAIN LAYOUT */
+    .main-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+      gap: 1.4rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 960px) {
+      .main-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* TAB NAV */
+    .tab-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.9rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+      padding-bottom: 0.35rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-tagline {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .tab-tagline span.badge {
+      padding: 0.16rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.06);
+      color: #1d4ed8;
+      font-weight: 500;
+      font-size: 0.74rem;
+    }
+
+    .tab-buttons {
+      margin-left: auto;
+      display: flex;
+      align-items: flex-end;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .main-tab {
+      border: none;
+      background: transparent;
+      padding: 0.55rem 1rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--muted);
+      border-radius: 18px 18px 0 0;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .main-tab:hover {
+      transform: translateY(-1px);
+      color: var(--primary-dark);
+    }
+
+    .main-tab.active {
+      color: var(--primary-dark);
+      background: rgba(255, 255, 255, 0.98);
+    }
+
+    .main-tab.active::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: -1px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ff4b3a, #ff9f1c);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* FILTER BAR (shared) */
+    .filter-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .filter-tab {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+      background: rgba(248, 250, 252, 0.9);
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .filter-tab.active {
+      background: rgba(37, 99, 235, 0.08);
+      border-color: #2563eb;
+      color: #1d4ed8;
+      font-weight: 500;
+    }
+
+    .sort-select {
+      font-size: 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      padding: 0.35rem 0.7rem;
+      background: rgba(248, 250, 252, 0.95);
+      outline: none;
+    }
+
+    .search-card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: var(--radius-lg);
+      padding: 0.85rem 0.9rem 1rem;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 0.8rem;
     }
 
     .search-card::before {
@@ -209,7 +539,7 @@
       position: absolute;
       inset: -30%;
       background: radial-gradient(circle at 0 0, rgba(255, 75, 58, 0.07), transparent 55%),
-                  radial-gradient(circle at 100% 100%, rgba(0, 79, 158, 0.08), transparent 50%);
+      radial-gradient(circle at 100% 100%, rgba(0, 79, 158, 0.08), transparent 50%);
       opacity: 0.9;
       pointer-events: none;
     }
@@ -222,7 +552,8 @@
     .search-row {
       display: flex;
       gap: 0.6rem;
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.65rem;
+      align-items: center;
     }
 
     .search-input-wrap {
@@ -270,6 +601,7 @@
       gap: 0.45rem;
       box-shadow: 0 10px 25px rgba(248, 113, 113, 0.35);
       transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+      white-space: nowrap;
     }
 
     .search-btn span.icon {
@@ -290,7 +622,7 @@
       font-size: 0.75rem;
       color: var(--muted);
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
     .search-meta-highlight {
@@ -318,129 +650,6 @@
       font-weight: 500;
     }
 
-    /* HERO SIDE CARD */
-    .hero-side-card {
-      background: linear-gradient(145deg, #004f9e, #001c42);
-      border-radius: var(--radius-lg);
-      padding: 1.25rem 1.15rem;
-      color: #e5e7eb;
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-side-pill {
-      position: absolute;
-      width: 210px;
-      height: 210px;
-      background: linear-gradient(135deg, #ff4b3a 0%, #ff7a3a 50%, #004f9e 51%, #0074d9 100%);
-      border-radius: 999px;
-      right: -80px;
-      bottom: -60px;
-      opacity: 0.16;
-      transform: rotate(-24deg);
-    }
-
-    .hero-side-card-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-side-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      opacity: 0.9;
-      margin-bottom: 0.25rem;
-    }
-
-    .hero-side-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-side-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem;
-      font-size: 0.8rem;
-      margin-top: 0.7rem;
-    }
-
-    .hero-stat {
-      background: rgba(15, 23, 42, 0.55);
-      border-radius: 1rem;
-      padding: 0.55rem 0.6rem;
-    }
-
-    .hero-stat-label {
-      font-size: 0.7rem;
-      opacity: 0.8;
-    }
-
-    .hero-stat-value {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-top: 0.15rem;
-    }
-
-    /* MAIN LAYOUT */
-    .main-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
-      gap: 1.5rem;
-      align-items: flex-start;
-    }
-
-    @media (max-width: 960px) {
-      .main-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    /* FILTER BAR */
-    .filter-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.85rem;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .filter-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-    }
-
-    .filter-tab {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      padding: 0.35rem 0.75rem;
-      font-size: 0.75rem;
-      background: rgba(248, 250, 252, 0.9);
-      cursor: pointer;
-      transition: all 0.18s ease;
-    }
-
-    .filter-tab.active {
-      background: rgba(37, 99, 235, 0.08);
-      border-color: #2563eb;
-      color: #1d4ed8;
-      font-weight: 500;
-    }
-
-    .sort-select {
-      font-size: 0.75rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
-      padding: 0.35rem 0.7rem;
-      background: rgba(248, 250, 252, 0.95);
-      outline: none;
-    }
-
     /* PRODUCT GRID */
     .product-grid {
       display: grid;
@@ -455,9 +664,9 @@
     }
 
     .product-card {
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.97);
       border-radius: 1.25rem;
-      padding: 0.75rem 0.8rem;
+      padding: 0.8rem 0.85rem;
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
@@ -475,7 +684,7 @@
     }
 
     .product-card:hover {
-      box-shadow: 0 20px 35px rgba(15, 23, 42, 0.12);
+      box-shadow: 0 20px 35px rgba(15, 23, 42, 0.14);
       transform: translateY(-2px);
     }
 
@@ -550,6 +759,12 @@
       font-weight: 500;
     }
 
+    .tag.lab {
+      background: rgba(59, 130, 246, 0.12);
+      color: #1d4ed8;
+      font-weight: 500;
+    }
+
     .price-row {
       display: flex;
       align-items: center;
@@ -606,6 +821,7 @@
       gap: 0.35rem;
       transition: background 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
       box-shadow: 0 8px 16px rgba(15, 23, 42, 0.22);
+      white-space: nowrap;
     }
 
     .add-btn:hover {
@@ -619,9 +835,122 @@
       box-shadow: 0 5px 10px rgba(15, 23, 42, 0.22);
     }
 
+    /* LAB TEST SPECS */
+    .lab-spec-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      font-size: 0.7rem;
+      margin-top: 0.25rem;
+      color: var(--muted);
+    }
+
+    .lab-spec-pill {
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(226, 232, 240, 0.8);
+    }
+
+    /* ALBION LAB BRANDING */
+    .lab-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 0.6rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: 0.9rem;
+      background: linear-gradient(90deg, #004f9e, #005fd0);
+      color: #ffffff;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.2);
+    }
+
+    .lab-brand-logo {
+      width: 70px;
+      height: 32px;
+      border-radius: 0.35rem;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #004f9e;
+      letter-spacing: 0.06em;
+    }
+
+    .lab-brand-logo span {
+      color: #e11d48;
+    }
+
+    /* If you want to use the real logo image instead of text:
+       replace the .lab-brand-logo div in HTML with:
+       <img src="PATH-TO-YOUR/Albion-110124.png" alt="Albion Diagnostics & Labs" class="lab-brand-logo-img" />
+    */
+    .lab-brand-text {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+    }
+
+    .lab-brand-sub {
+      font-size: 0.7rem;
+      opacity: 0.9;
+    }
+
+    .lab-powered-inline {
+      margin-top: 0.3rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      color: #1d4ed8;
+    }
+
+    .lab-powered-inline span {
+      color: #ef4444;
+    }
+
+    /* PAGINATION */
+    .pagination {
+      margin-top: 0.8rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+
+    .page-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(248, 250, 252, 0.95);
+      padding: 0.25rem 0.65rem;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .page-btn:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .page-btn.disabled {
+      opacity: 0.5;
+      cursor: default;
+      transform: none;
+    }
+
+    .page-info {
+      padding: 0.2rem 0.6rem;
+    }
+
     /* CART */
     .cart-card {
-      background: rgba(15, 23, 42, 0.96);
+      background: rgba(15, 23, 42, 0.97);
       color: #e5e7eb;
       border-radius: 1.3rem;
       padding: 1rem 0.9rem;
@@ -633,6 +962,13 @@
       flex-direction: column;
       gap: 0.75rem;
       overflow: hidden;
+    }
+
+    @media (max-width: 960px) {
+      .cart-card {
+        position: static;
+        max-height: none;
+      }
     }
 
     .cart-header {
@@ -688,6 +1024,25 @@
       font-size: 0.7rem;
     }
 
+    .cart-item-type-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.67rem;
+      padding: 0.12rem 0.4rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      margin-top: 0.18rem;
+    }
+
+    .cart-item-type-tag span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
     .cart-item-controls {
       display: flex;
       align-items: center;
@@ -724,6 +1079,8 @@
       font-weight: 500;
       color: #f97316;
       font-size: 0.78rem;
+      min-width: 64px;
+      text-align: right;
     }
 
     .cart-footer {
@@ -733,32 +1090,43 @@
       padding: 0.7rem 0.7rem 0.85rem;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
-      font-size: 0.8rem;
+      gap: 0.35rem;
+      font-size: 0.78rem;
     }
 
     .cart-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 0.5rem;
     }
 
-    .cart-total {
-      font-size: 0.95rem;
+    .cart-row.muted span {
+      color: #9ca3af;
+    }
+
+    .cart-total-heading {
+      font-size: 0.9rem;
       font-weight: 600;
+    }
+
+    .cart-total-amount {
+      font-size: 0.95rem;
+      font-weight: 700;
     }
 
     .cart-savings {
       color: #22c55e;
       font-size: 0.78rem;
+      font-weight: 500;
     }
 
     .checkout-btn {
-      margin-top: 0.4rem;
+      margin-top: 0.35rem;
       border-radius: 999px;
       border: none;
       width: 100%;
-      padding: 0.55rem 0.9rem;
+      padding: 0.6rem 0.9rem;
       background: linear-gradient(135deg, #22c55e, #16a34a);
       color: #f9fafb;
       font-size: 0.85rem;
@@ -783,9 +1151,116 @@
       margin-top: 0.2rem;
     }
 
+    .checkout-divider {
+      height: 1px;
+      background: linear-gradient(90deg, rgba(148,163,184,0.2), rgba(148,163,184,0.5), rgba(148,163,184,0.2));
+      margin: 0.25rem -0.7rem;
+    }
+
+    /* ABOUT & CONTACT CONTENT */
+    .content-card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 1.25rem;
+      padding: 1.1rem 1.1rem 1.1rem;
+      box-shadow: var(--shadow-soft);
+      margin-top: 0.4rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .content-heading {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .content-tagline {
+      font-size: 0.82rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .content-list {
+      margin-left: 1rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 720px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .contact-item {
+      padding: 0.6rem 0.7rem;
+      border-radius: 0.9rem;
+      background: rgba(248, 250, 252, 0.95);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--primary-dark);
+      margin-bottom: 0.15rem;
+    }
+
+    .contact-value {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .mini-input {
+      width: 100%;
+      padding: 0.45rem 0.55rem;
+      border-radius: 0.6rem;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 0.8rem;
+      outline: none;
+      margin-bottom: 0.4rem;
+    }
+
+    .mini-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.18);
+      background: #ffffff;
+    }
+
+    .mini-textarea {
+      min-height: 72px;
+      resize: vertical;
+    }
+
+    .mini-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 0.45rem 0.9rem;
+      background: linear-gradient(135deg, #ff4b3a, #ff9f1c);
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      box-shadow: 0 10px 20px rgba(248, 113, 113, 0.4);
+    }
+
     /* FOOTER MINI */
     .footer-mini {
-      margin-top: 1.8rem;
+      margin-top: 1.6rem;
       font-size: 0.7rem;
       color: #9ca3af;
       display: flex;
@@ -812,109 +1287,143 @@
   </style>
 </head>
 <body>
-  <div class="app-shell">
-    <!-- HEADER -->
-    <header>
-      <div class="brand">
-        <!-- Replace src with your logo file -->
-        <div class="brand-logo">
-          <div class="brand-logo-pill"></div>
+<div class="app-shell">
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <div class="brand-logo">
+        <div class="brand-logo-pill"></div>
+      </div>
+      <div class="brand-text">
+        <h1>Pill Xpress <span>Rx</span></h1>
+        <div class="tagline">Dawai sahi, daam sahi 💊</div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="global-search">
+        <span class="global-search-icon">🔎</span>
+        <input id="globalSearch" type="text" placeholder="Search medicines & lab tests together..." />
+      </div>
+      <div class="pill-badge">
+        <div class="pill-badge-dot"></div>
+        20% OFF on all medicines
+      </div>
+      <span class="header-mini">100% genuine | Home delivery | PAN India</span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-tagline-chip">
+        <div class="hero-tagline-chip-icon"></div>
+        Dawai sahi, daam sahi – always!
+      </div>
+      <h2 class="hero-copy-title">
+        Your friendly online health buddy. <br />
+        <span>Medicines & lab tests in a tap.</span>
+      </h2>
+      <p class="hero-sub">
+        Search from thousands of medicines, book trusted lab tests with home sample collection,
+        track everything in one smooth, colourful dashboard. Health, but make it easy. ✨
+      </p>
+      <div class="hero-badges">
+        <span class="hero-badge"><span class="icon">🚚</span> Free delivery above ₹499</span>
+        <span class="hero-badge secondary"><span class="icon">🩺</span> Verified prescriptions</span>
+        <span class="hero-badge"><span class="icon">📄</span> Digital reports & bills</span>
+      </div>
+      <div class="upload-card">
+        <div class="upload-card-text">
+          <span>Upload prescription</span>
+          We’ll read your prescription and prepare your order for a quick review.
         </div>
-        <div class="brand-text">
-          <h1>Pill Xpress <span>Rx</span></h1>
-          <div class="tagline">Dawai sahi, daam sahi</div>
+        <button class="upload-btn" type="button">
+          <span class="icon">⬆</span>
+          <span>Upload</span>
+        </button>
+      </div>
+    </div>
+
+    <aside class="hero-right">
+      <div class="hero-side-pill"></div>
+      <div class="hero-side-card-content">
+        <div class="hero-side-label">Why Pill Xpress?</div>
+        <div class="hero-side-title">Smart, safe &amp; speedy healthcare in your pocket.</div>
+        <div class="hero-side-grid">
+          <div class="hero-stat">
+            <div class="hero-stat-label">Medicine delivery</div>
+            <div class="hero-stat-value">4–6 hours*</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-label">Lab reports</div>
+            <div class="hero-stat-value">24–48 hours*</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-label">Max savings</div>
+            <div class="hero-stat-value">Up to 20%</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-label">Serviceable cities</div>
+            <div class="hero-stat-value">PAN India</div>
+          </div>
         </div>
       </div>
-      <div class="header-actions">
-        <div class="pill-badge">
-          <div class="pill-badge-dot"></div>
-          20% OFF on all medicines
+    </aside>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-grid">
+    <section>
+      <!-- TAB NAV -->
+      <div class="tab-nav">
+        <div class="tab-tagline">
+          Your one-stop health app
+          <span class="badge">Medicines • Lab tests • Care</span>
         </div>
-        <span>100% genuine | Home delivery</span>
+        <div class="tab-buttons">
+          <button class="main-tab active" data-tab="medicines">Medicines</button>
+          <button class="main-tab" data-tab="labs">Lab Tests</button>
+          <button class="main-tab" data-tab="about">About</button>
+          <button class="main-tab" data-tab="contact">Contact Us</button>
+        </div>
       </div>
-    </header>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div>
-        <div class="hero-tagline-chip">
-          <div class="hero-tagline-chip-icon"></div>
-          Dawai sahi, daam sahi – always!
-        </div>
-        <h2 class="hero-copy-title">
-          Order medicines in seconds.<br />
-          <span>Save flat 20% on MRP.</span>
-        </h2>
-        <p class="hero-sub">
-          Upload your prescription, search from thousands of medicines and get them delivered
-          at your doorstep with lightning-fast service.
-        </p>
-
+      <!-- MEDICINES PANEL -->
+      <div class="tab-panel active" id="tab-medicines">
         <div class="search-card">
           <div class="search-card-inner">
             <div class="search-row">
               <div class="search-input-wrap">
-                <span class="search-icon">🔍</span>
-                <input id="searchInput" type="text" placeholder="Search by medicine / salt / brand..." />
+                <span class="search-icon">💊</span>
+                <input id="medSearchInput" type="text" placeholder="Search by medicine / salt / brand..." />
               </div>
-              <button class="search-btn" id="searchBtn">
+              <button class="search-btn" id="medSearchBtn">
                 Search
                 <span class="icon">⇢</span>
               </button>
             </div>
             <div class="search-meta">
               <span>
-                Showing <span class="search-meta-highlight" id="productCount">0</span> results
+                Showing <span class="search-meta-highlight" id="medProductCount">0</span> medicines
               </span>
               <div class="search-meta-pills">
                 <span class="meta-pill primary">Flat 20% OFF MRP</span>
-                <span class="meta-pill">Free delivery above ₹499</span>
+                <span class="meta-pill">Fast delivery in select cities</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <aside class="hero-side-card">
-        <div class="hero-side-pill"></div>
-        <div class="hero-side-card-content">
-          <div class="hero-side-label">Why Pill Xpress?</div>
-          <div class="hero-side-title">Smart, safe &amp; speedy pharmacy.</div>
-          <div class="hero-side-grid">
-            <div class="hero-stat">
-              <div class="hero-stat-label">Average delivery</div>
-              <div class="hero-stat-value">4–6 hours*</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-label">Max savings</div>
-              <div class="hero-stat-value">Up to 20%</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-label">Authenticity</div>
-              <div class="hero-stat-value">100% trusted</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-label">Serviceable cities</div>
-              <div class="hero-stat-value">PAN India</div>
-            </div>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <!-- MAIN CONTENT -->
-    <main class="main-grid">
-      <!-- PRODUCTS -->
-      <section>
         <div class="filter-bar">
-          <div class="filter-tabs" id="filterTabs">
-            <button class="filter-tab active" data-filter="all">All</button>
-            <button class="filter-tab" data-filter="tablet">Tablets</button>
-            <button class="filter-tab" data-filter="syrup">Syrups</button>
-            <button class="filter-tab" data-filter="ointment">Ointments</button>
-            <button class="filter-tab" data-filter="supplement">Supplements</button>
+          <div class="filter-tabs" id="medFilterTabs">
+            <button class="filter-tab active" data-med-filter="all">All</button>
+            <button class="filter-tab" data-med-filter="tablet">Tablets</button>
+            <button class="filter-tab" data-med-filter="syrup">Syrups</button>
+            <button class="filter-tab" data-med-filter="ointment">Ointments</button>
+            <button class="filter-tab" data-med-filter="supplement">Supplements</button>
+            <button class="filter-tab" data-med-filter="injection">Injections</button>
           </div>
-          <select class="sort-select" id="sortSelect">
+          <select class="sort-select" id="medSortSelect">
             <option value="relevance">Sort: Relevance</option>
             <option value="price-low">Price: Low to High</option>
             <option value="price-high">Price: High to Low</option>
@@ -922,355 +1431,1368 @@
           </select>
         </div>
 
-        <div class="product-grid" id="productGrid"></div>
-      </section>
+        <div class="product-grid" id="medProductGrid"></div>
+        <div class="pagination" id="medPagination"></div>
+      </div>
 
-      <!-- CART -->
-      <aside class="cart-card">
-        <div class="cart-header">
+      <!-- LAB TESTS PANEL -->
+      <div class="tab-panel" id="tab-labs">
+        <!-- Albion branding strip -->
+        <div class="lab-brand">
+          <div class="lab-brand-logo">
+            AD<span>⧉</span>
+          </div>
           <div>
-            <div class="cart-title">Your Cart</div>
-            <div style="font-size: 0.72rem; color:#9ca3af;">
-              20% OFF already applied on all items
-            </div>
-          </div>
-          <div class="cart-pill">
-            <span id="cartItemsCount">0</span> items
+            <div class="lab-brand-text">Powered by ALBION DIAGNOSTICS &amp; LABS</div>
+            <div class="lab-brand-sub">THE NEXT-GEN SUPER SPECIALITY DIAGNOSTICS</div>
           </div>
         </div>
-        <div class="cart-body" id="cartBody">
-          <div class="cart-empty">No items yet. Add medicines to see your savings!</div>
-        </div>
-        <div class="cart-footer">
-          <div class="cart-row">
-            <span class="cart-total">Total payable</span>
-            <span class="cart-total" id="cartTotal">₹0.00</span>
-          </div>
-          <div class="cart-row">
-            <span>MRP total</span>
-            <span id="cartMrp">₹0.00</span>
-          </div>
-          <div class="cart-row">
-            <span>Savings (20% OFF)</span>
-            <span class="cart-savings" id="cartSavings">₹0.00</span>
-          </div>
-          <button class="checkout-btn" type="button">
-            Proceed to checkout
-            <span>⟶</span>
-          </button>
-          <div class="checkout-note">
-            Actual order processing, payment &amp; prescription upload need to be implemented
-            on your backend.
-          </div>
-        </div>
-      </aside>
-    </main>
 
-    <footer class="footer-mini">
-      <span>© <span id="year"></span> Pill Xpress. Dawai sahi, daam sahi.</span>
-      <span>For display/demo only – plug in your own catalog &amp; backend.</span>
-    </footer>
-  </div>
-
-  <script>
-    // SAMPLE MEDICINES (replace with your DB/API)
-    const PRODUCTS = [
-      {
-        id: 1,
-        name: "Paracetamol 500mg Tablet",
-        salt: "Paracetamol",
-        form: "tablet",
-        strength: "500 mg",
-        packSize: "Strip of 10 tablets",
-        manufacturer: "PX Healthcare Ltd.",
-        mrp: 30.0,
-        prescriptionRequired: false,
-        category: "Pain Relief"
-      },
-      {
-        id: 2,
-        name: "Amoxicillin 500mg Capsule",
-        salt: "Amoxicillin",
-        form: "tablet",
-        strength: "500 mg",
-        packSize: "Strip of 10 capsules",
-        manufacturer: "Pill Xpress Labs",
-        mrp: 122.5,
-        prescriptionRequired: true,
-        category: "Antibiotic"
-      },
-      {
-        id: 3,
-        name: "Cetrizine 10mg Tablet",
-        salt: "Cetirizine",
-        form: "tablet",
-        strength: "10 mg",
-        packSize: "Strip of 10 tablets",
-        manufacturer: "PX Pharma",
-        mrp: 18.0,
-        prescriptionRequired: false,
-        category: "Allergy"
-      },
-      {
-        id: 4,
-        name: "Pantoprazole 40mg Tablet",
-        salt: "Pantoprazole",
-        form: "tablet",
-        strength: "40 mg",
-        packSize: "Strip of 15 tablets",
-        manufacturer: "PX Life Sciences",
-        mrp: 165.0,
-        prescriptionRequired: true,
-        category: "Acidity"
-      },
-      {
-        id: 5,
-        name: "Vitamin D3 (Cholecalciferol) 60K Capsule",
-        salt: "Cholecalciferol",
-        form: "supplement",
-        strength: "60,000 IU",
-        packSize: "Strip of 4 softgels",
-        manufacturer: "Pill Xpress Nutrition",
-        mrp: 320.0,
-        prescriptionRequired: false,
-        category: "Supplements"
-      },
-      {
-        id: 6,
-        name: "Cough Relief Syrup",
-        salt: "Dextromethorphan + Chlorpheniramine + Phenylephrine",
-        form: "syrup",
-        strength: "100 ml",
-        packSize: "Bottle of 100 ml",
-        manufacturer: "PX Remedies",
-        mrp: 95.0,
-        prescriptionRequired: false,
-        category: "Cough & Cold"
-      },
-      {
-        id: 7,
-        name: "Antiseptic Skin Ointment",
-        salt: "Povidone Iodine",
-        form: "ointment",
-        strength: "10% w/w",
-        packSize: "Tube of 15 g",
-        manufacturer: "Pill Xpress Care",
-        mrp: 85.0,
-        prescriptionRequired: false,
-        category: "First Aid"
-      },
-      {
-        id: 8,
-        name: "ORSL Rehydration Solution",
-        salt: "WHO ORS Formula",
-        form: "syrup",
-        strength: "200 ml",
-        packSize: "Bottle of 200 ml",
-        manufacturer: "PX Hydration",
-        mrp: 65.0,
-        prescriptionRequired: false,
-        category: "Electrolytes"
-      }
-    ];
-
-    // CART STATE
-    const cart = {};
-
-    function discountedPrice(mrp) {
-      // 20% discount
-      return +(mrp * 0.8).toFixed(2);
-    }
-
-    function formatCurrency(v) {
-      return "₹" + v.toFixed(2);
-    }
-
-    function renderProducts() {
-      const grid = document.getElementById("productGrid");
-      const searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
-      const activeFilter = document.querySelector(".filter-tab.active").dataset.filter;
-      const sortValue = document.getElementById("sortSelect").value;
-
-      let list = PRODUCTS.filter((p) => {
-        const matchesFilter = activeFilter === "all" || p.form === activeFilter;
-        const text =
-          (p.name + " " + p.salt + " " + p.category + " " + p.manufacturer).toLowerCase();
-        const matchesSearch = !searchTerm || text.includes(searchTerm);
-        return matchesFilter && matchesSearch;
-      });
-
-      // Sorting
-      if (sortValue === "price-low") {
-        list.sort((a, b) => discountedPrice(a.mrp) - discountedPrice(b.mrp));
-      } else if (sortValue === "price-high") {
-        list.sort((a, b) => discountedPrice(b.mrp) - discountedPrice(a.mrp));
-      } else if (sortValue === "name-az") {
-        list.sort((a, b) => a.name.localeCompare(b.name));
-      }
-
-      document.getElementById("productCount").textContent = list.length.toString();
-
-      grid.innerHTML = "";
-      list.forEach((p, index) => {
-        const node = document.createElement("article");
-        node.className = "product-card";
-        node.style.transitionDelay = `${index * 40}ms`;
-
-        const mrp = p.mrp;
-        const price = discountedPrice(mrp);
-        const savings = mrp - price;
-
-        node.innerHTML = `
-          <div class="product-img-wrap">
-            <div class="product-img-pill"></div>
-          </div>
-          <div class="product-body">
-            <div class="product-title" title="${p.name}">${p.name}</div>
-            <div class="product-sub">${p.salt} • ${p.strength}</div>
-            <div class="product-sub">${p.packSize}</div>
-            <div class="product-tags">
-              <span class="tag">${p.category}</span>
-              <span class="tag">${p.form.charAt(0).toUpperCase() + p.form.slice(1)}</span>
-              ${
-                p.prescriptionRequired
-                  ? '<span class="tag rx">Rx Required</span>'
-                  : '<span class="tag">OTC</span>'
-              }
-            </div>
-            <div class="price-row">
-              <div class="price-stack">
-                <span class="price-now">${formatCurrency(price)}</span>
-                <span class="price-mrp">MRP ${formatCurrency(mrp)}</span>
-                <span class="price-save">You save ${formatCurrency(savings)}</span>
+        <div class="search-card">
+          <div class="search-card-inner">
+            <div class="search-row">
+              <div class="search-input-wrap">
+                <span class="search-icon">🧪</span>
+                <input id="labSearchInput" type="text" placeholder="Search by test / condition / package..." />
               </div>
-              <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.25rem;">
-                <span class="discount-pill">20% OFF</span>
-                <button class="add-btn" type="button" data-id="${p.id}">
-                  <span>ADD</span>
-                  <span>＋</span>
-                </button>
+              <button class="search-btn" id="labSearchBtn">
+                Search
+                <span class="icon">⇢</span>
+              </button>
+            </div>
+            <div class="search-meta">
+              <span>
+                Showing <span class="search-meta-highlight" id="labTestCount">0</span> lab tests
+              </span>
+              <div class="search-meta-pills">
+                <span class="meta-pill primary">Free home sample collection</span>
+                <span class="meta-pill">Digital reports on app</span>
+                <span class="meta-pill">Powered by Albion Diagnostics &amp; Labs</span>
               </div>
             </div>
           </div>
-        `;
+        </div>
 
-        grid.appendChild(node);
+        <div class="filter-bar">
+          <div class="filter-tabs" id="labFilterTabs">
+            <button class="filter-tab active" data-lab-filter="all">All</button>
+            <button class="filter-tab" data-lab-filter="popular">Popular</button>
+            <button class="filter-tab" data-lab-filter="full-body">Full body</button>
+            <button class="filter-tab" data-lab-filter="diabetes">Diabetes</button>
+            <button class="filter-tab" data-lab-filter="heart">Heart</button>
+            <button class="filter-tab" data-lab-filter="vitamin">Vitamins</button>
+          </div>
+          <select class="sort-select" id="labSortSelect">
+            <option value="relevance">Sort: Relevance</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="name-az">Name: A → Z</option>
+          </select>
+        </div>
 
-        // animate in
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            node.classList.add("visible");
-          });
-        });
-      });
+        <div class="product-grid" id="labTestGrid"></div>
+        <div class="pagination" id="labPagination"></div>
+      </div>
 
-      // Attach add-to-cart listeners
-      grid.querySelectorAll(".add-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const id = parseInt(btn.dataset.id, 10);
-          addToCart(id);
-        });
-      });
-    }
+      <!-- ABOUT PANEL -->
+      <div class="tab-panel" id="tab-about">
+        <div class="content-card">
+          <div class="content-heading">About Pill Xpress 💙</div>
+          <div class="content-tagline">
+            Built to make healthcare simple, transparent and a little more joyful.
+          </div>
+          <p>
+            Pill Xpress is a demo-first experience of how a modern digital pharmacy can look and feel.
+            Think of it as a colourful control panel for your health — medicines, lab tests, savings and
+            convenience, all in one place.
+          </p>
+          <ul class="content-list">
+            <li>🧾 <strong>Clear pricing</strong> – upfront MRP & savings shown on every card.</li>
+            <li>💊 <strong>Smart medicine browser</strong> – filter by form, category and price.</li>
+            <li>🧪 <strong>Lab test hub</strong> – book tests with home collection and digital reports.</li>
+            <li>🛡️ <strong>Safety-first design</strong> – Rx flag on prescription medicines.</li>
+          </ul>
+          <p>
+            This page is for display/demo only. Plug in your own catalog, lab partners, payment gateway and
+            logistics to turn it into a full-stack healthcare experience.
+          </p>
+        </div>
+      </div>
 
-    function addToCart(productId) {
-      if (!cart[productId]) {
-        const product = PRODUCTS.find((p) => p.id === productId);
-        cart[productId] = { product, qty: 1 };
-      } else {
-        cart[productId].qty += 1;
-      }
-      renderCart();
-    }
+      <!-- CONTACT PANEL -->
+      <div class="tab-panel" id="tab-contact">
+        <div class="content-card">
+          <div class="content-heading">Contact Us 📬</div>
+          <div class="content-tagline">
+            Have feedback or ideas? We’d love to hear from you.
+          </div>
 
-    function updateQty(productId, delta) {
-      if (!cart[productId]) return;
-      cart[productId].qty += delta;
-      if (cart[productId].qty <= 0) {
-        delete cart[productId];
-      }
-      renderCart();
-    }
-
-    function renderCart() {
-      const body = document.getElementById("cartBody");
-      const items = Object.values(cart);
-      const itemsCountSpan = document.getElementById("cartItemsCount");
-
-      if (!items.length) {
-        body.innerHTML = '<div class="cart-empty">No items yet. Add medicines to see your savings!</div>';
-        itemsCountSpan.textContent = "0";
-      } else {
-        body.innerHTML = "";
-        let totalMrp = 0;
-        let totalPayable = 0;
-
-        items.forEach(({ product, qty }) => {
-          const mrpForQty = product.mrp * qty;
-          const payableForQty = discountedPrice(product.mrp) * qty;
-          totalMrp += mrpForQty;
-          totalPayable += payableForQty;
-
-          const itemNode = document.createElement("div");
-          itemNode.className = "cart-item";
-          itemNode.innerHTML = `
+          <div class="contact-grid">
             <div>
-              <div class="cart-item-name">${product.name}</div>
-              <div class="cart-item-meta">${product.packSize}</div>
-              <div class="cart-item-meta">${qty} x ${formatCurrency(discountedPrice(product.mrp))}</div>
+              <div class="contact-item">
+                <div class="contact-label">Support email</div>
+                <div class="contact-value">support@pillxpress.demo</div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-label">Helpline (9am–9pm)</div>
+                <div class="contact-value">+91-99999-00000</div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-label">Head office</div>
+                <div class="contact-value">
+                  Pill Xpress House, Health Tech Park,<br />
+                  Demo City – 400001, India.
+                </div>
+              </div>
             </div>
-            <div class="cart-item-controls">
-              <button class="qty-btn" data-id="${product.id}" data-delta="-1">−</button>
-              <span class="cart-qty">${qty}</span>
-              <button class="qty-btn" data-id="${product.id}" data-delta="1">＋</button>
-              <span class="cart-item-price">${formatCurrency(payableForQty)}</span>
+
+            <div>
+              <div class="contact-label" style="margin-bottom:0.25rem;">Quick message</div>
+              <input class="mini-input" type="text" placeholder="Your name" />
+              <input class="mini-input" type="email" placeholder="Email address" />
+              <textarea class="mini-input mini-textarea" placeholder="Tell us what’s on your mind..."></textarea>
+              <button class="mini-btn" type="button">
+                <span>Send message</span>
+                <span>✉️</span>
+              </button>
+              <div style="font-size:0.7rem; color:#9ca3af; margin-top:0.3rem;">
+                This is a sample form. Wire it up to your own backend or CRM to receive messages.
+              </div>
             </div>
-          `;
-          body.appendChild(itemNode);
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CART (COMMON FOR MED + LAB) -->
+    <aside class="cart-card">
+      <div class="cart-header">
+        <div>
+          <div class="cart-title">Your Cart</div>
+          <div style="font-size: 0.72rem; color:#9ca3af;">
+            Medicines (20% OFF) · Lab tests (upto 30% OFF)
+          </div>
+        </div>
+        <div class="cart-pill">
+          <span id="cartItemsCount">0</span> items
+        </div>
+      </div>
+      <div class="cart-body" id="cartBody">
+        <div class="cart-empty">No items yet. Add medicines or lab tests to see your savings!</div>
+      </div>
+      <div class="cart-footer">
+        <div class="cart-row muted">
+          <span>Medicines subtotal</span>
+          <span id="cartMedSubtotal">₹0.00</span>
+        </div>
+        <div class="cart-row muted">
+          <span>Lab tests subtotal</span>
+          <span id="cartLabSubtotal">₹0.00</span>
+        </div>
+
+        <div class="checkout-divider"></div>
+
+        <div class="cart-row">
+          <span class="cart-total-heading">Total payable</span>
+          <span class="cart-total-amount" id="cartTotal">₹0.00</span>
+        </div>
+        <div class="cart-row muted">
+          <span>MRP total</span>
+          <span id="cartMrp">₹0.00</span>
+        </div>
+        <div class="cart-row">
+          <span>Savings</span>
+          <span class="cart-savings" id="cartSavings">₹0.00</span>
+        </div>
+        <button class="checkout-btn" type="button">
+          Proceed to checkout
+          <span>⟶</span>
+        </button>
+        <div class="checkout-note">
+          Single checkout for medicines &amp; lab tests. Actual payment, address &amp; prescription upload
+          need to be implemented on your backend.
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer-mini">
+    <span>© <span id="year"></span> Pill Xpress. Dawai sahi, daam sahi.</span>
+    <span>For display/demo only – plug in your own catalog, lab partners &amp; backend.</span>
+  </footer>
+</div>
+
+<script>
+  // ============== UTILITIES ==============
+  function debounce(fn, delay) {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => fn(...args), delay);
+    };
+  }
+
+  function formatCurrency(v) {
+    return "₹" + v.toFixed(2);
+  }
+
+  function discountedMedicinePrice(mrp) {
+    return +(mrp * 0.8).toFixed(2); // 20% OFF medicines
+  }
+
+  function discountedLabPrice(mrp, discountPercent) {
+    const off = (100 - discountPercent) / 100;
+    return +(mrp * off).toFixed(2);
+  }
+
+  function itemKey(type, id) {
+    return type + "-" + id;
+  }
+
+  // ============== DATA: MEDICINES (BASE + GENERATED) ==============
+  const BASE_PRODUCTS = [
+    {
+      id: 1,
+      name: "Paracetamol 500mg Tablet",
+      salt: "Paracetamol",
+      form: "tablet",
+      strength: "500 mg",
+      packSize: "Strip of 10 tablets",
+      manufacturer: "PX Healthcare Ltd.",
+      mrp: 30.0,
+      prescriptionRequired: false,
+      category: "Pain Relief"
+    },
+    {
+      id: 2,
+      name: "Paracetamol 650mg Tablet",
+      salt: "Paracetamol",
+      form: "tablet",
+      strength: "650 mg",
+      packSize: "Strip of 15 tablets",
+      manufacturer: "PX Healthcare Ltd.",
+      mrp: 45.0,
+      prescriptionRequired: false,
+      category: "Pain Relief"
+    },
+    {
+      id: 3,
+      name: "Ibuprofen 400mg Tablet",
+      salt: "Ibuprofen",
+      form: "tablet",
+      strength: "400 mg",
+      packSize: "Strip of 10 tablets",
+      manufacturer: "PX Pharma",
+      mrp: 38.0,
+      prescriptionRequired: false,
+      category: "Pain Relief"
+    },
+    {
+      id: 4,
+      name: "Diclofenac 50mg Tablet",
+      salt: "Diclofenac",
+      form: "tablet",
+      strength: "50 mg",
+      packSize: "Strip of 10 tablets",
+      manufacturer: "PX Remedies",
+      mrp: 42.0,
+      prescriptionRequired: true,
+      category: "Pain Relief"
+    },
+    {
+      id: 5,
+      name: "Cetrizine 10mg Tablet",
+      salt: "Cetirizine",
+      form: "tablet",
+      strength: "10 mg",
+      packSize: "Strip of 10 tablets",
+      manufacturer: "PX Pharma",
+      mrp: 18.0,
+      prescriptionRequired: false,
+      category: "Allergy"
+    },
+    {
+      id: 6,
+      name: "Loratadine 10mg Tablet",
+      salt: "Loratadine",
+      form: "tablet",
+      strength: "10 mg",
+      packSize: "Strip of 10 tablets",
+      manufacturer: "PX Pharma",
+      mrp: 24.0,
+      prescriptionRequired: false,
+      category: "Allergy"
+    },
+    {
+      id: 7,
+      name: "Amoxicillin 500mg Capsule",
+      salt: "Amoxicillin",
+      form: "tablet",
+      strength: "500 mg",
+      packSize: "Strip of 10 capsules",
+      manufacturer: "Pill Xpress Labs",
+      mrp: 122.5,
+      prescriptionRequired: true,
+      category: "Antibiotic"
+    },
+    {
+      id: 8,
+      name: "Azithromycin 500mg Tablet",
+      salt: "Azithromycin",
+      form: "tablet",
+      strength: "500 mg",
+      packSize: "Strip of 3 tablets",
+      manufacturer: "Pill Xpress Labs",
+      mrp: 78.0,
+      prescriptionRequired: true,
+      category: "Antibiotic"
+    },
+    {
+      id: 9,
+      name: "Pantoprazole 40mg Tablet",
+      salt: "Pantoprazole",
+      form: "tablet",
+      strength: "40 mg",
+      packSize: "Strip of 15 tablets",
+      manufacturer: "PX Life Sciences",
+      mrp: 165.0,
+      prescriptionRequired: true,
+      category: "Acidity"
+    },
+    {
+      id: 10,
+      name: "Omeprazole 20mg Capsule",
+      salt: "Omeprazole",
+      form: "tablet",
+      strength: "20 mg",
+      packSize: "Strip of 15 capsules",
+      manufacturer: "PX Life Sciences",
+      mrp: 110.0,
+      prescriptionRequired: false,
+      category: "Acidity"
+    },
+    {
+      id: 11,
+      name: "Metformin 500mg Tablet",
+      salt: "Metformin",
+      form: "tablet",
+      strength: "500 mg",
+      packSize: "Strip of 10 tablets",
+      manufacturer: "PX Diabetes Care",
+      mrp: 32.0,
+      prescriptionRequired: true,
+      category: "Diabetes"
+    },
+    {
+      id: 12,
+      name: "Metformin SR 500mg Tablet",
+      salt: "Metformin SR",
+      form: "tablet",
+      strength: "500 mg",
+      packSize: "Strip of 10 tablets",
+      manufacturer: "PX Diabetes Care",
+      mrp: 38.0,
+      prescriptionRequired: true,
+      category: "Diabetes"
+    },
+    {
+      id: 13,
+      name: "Amlodipine 5mg Tablet",
+      salt: "Amlodipine",
+      form: "tablet",
+      strength: "5 mg",
+      packSize: "Strip of 10 tablets",
+      manufacturer: "PX Cardia",
+      mrp: 29.0,
+      prescriptionRequired: true,
+      category: "Hypertension"
+    },
+    {
+      id: 14,
+      name: "Telmisartan 40mg Tablet",
+      salt: "Telmisartan",
+      form: "tablet",
+      strength: "40 mg",
+      packSize: "Strip of 10 tablets",
+      manufacturer: "PX Cardia",
+      mrp: 120.0,
+      prescriptionRequired: true,
+      category: "Hypertension"
+    },
+    {
+      id: 15,
+      name: "Atorvastatin 10mg Tablet",
+      salt: "Atorvastatin",
+      form: "tablet",
+      strength: "10 mg",
+      packSize: "Strip of 10 tablets",
+      manufacturer: "PX Cardia",
+      mrp: 95.0,
+      prescriptionRequired: true,
+      category: "Cholesterol"
+    },
+    {
+      id: 16,
+      name: "Vitamin D3 (Cholecalciferol) 60K Capsule",
+      salt: "Cholecalciferol",
+      form: "supplement",
+      strength: "60,000 IU",
+      packSize: "Strip of 4 softgels",
+      manufacturer: "Pill Xpress Nutrition",
+      mrp: 320.0,
+      prescriptionRequired: false,
+      category: "Supplements"
+    },
+    {
+      id: 17,
+      name: "Vitamin B-Complex Syrup",
+      salt: "B-Complex with Lysine",
+      form: "syrup",
+      strength: "200 ml",
+      packSize: "Bottle of 200 ml",
+      manufacturer: "Pill Xpress Nutrition",
+      mrp: 110.0,
+      prescriptionRequired: false,
+      category: "Supplements"
+    },
+    {
+      id: 18,
+      name: "Cough Relief Syrup",
+      salt: "Dextromethorphan + Chlorpheniramine + Phenylephrine",
+      form: "syrup",
+      strength: "100 ml",
+      packSize: "Bottle of 100 ml",
+      manufacturer: "PX Remedies",
+      mrp: 95.0,
+      prescriptionRequired: false,
+      category: "Cough & Cold"
+    },
+    {
+      id: 19,
+      name: "Antiseptic Skin Ointment",
+      salt: "Povidone Iodine",
+      form: "ointment",
+      strength: "10% w/w",
+      packSize: "Tube of 15 g",
+      manufacturer: "Pill Xpress Care",
+      mrp: 85.0,
+      prescriptionRequired: false,
+      category: "First Aid"
+    },
+    {
+      id: 20,
+      name: "ORSL Rehydration Solution",
+      salt: "WHO ORS Formula",
+      form: "syrup",
+      strength: "200 ml",
+      packSize: "Bottle of 200 ml",
+      manufacturer: "PX Hydration",
+      mrp: 65.0,
+      prescriptionRequired: false,
+      category: "Electrolytes"
+    }
+  ];
+
+  const PRODUCT_TEMPLATES = [
+    {
+      salt: "Paracetamol",
+      form: "tablet",
+      strength: "650 mg",
+      packSize: "Strip of 15 tablets",
+      manufacturer: "PX Generics",
+      mrp: 46,
+      prescriptionRequired: false,
+      category: "Pain Relief"
+    },
+    {
+      salt: "Ibuprofen",
+      form: "tablet",
+      strength: "200 mg",
+      packSize: "Strip of 15 tablets",
+      manufacturer: "PX Generics",
+      mrp: 34,
+      prescriptionRequired: false,
+      category: "Pain Relief"
+    },
+    {
+      salt: "Metformin",
+      form: "tablet",
+      strength: "500 mg",
+      packSize: "Strip of 15 tablets",
+      manufacturer: "PX Diabetes Care",
+      mrp: 40,
+      prescriptionRequired: true,
+      category: "Diabetes"
+    },
+    {
+      salt: "Amlodipine",
+      form: "tablet",
+      strength: "5 mg",
+      packSize: "Strip of 15 tablets",
+      manufacturer: "PX Cardia",
+      mrp: 35,
+      prescriptionRequired: true,
+      category: "Hypertension"
+    },
+    {
+      salt: "Cefixime",
+      form: "tablet",
+      strength: "200 mg",
+      packSize: "Strip of 10 tablets",
+      manufacturer: "PX Antibiotics",
+      mrp: 160,
+      prescriptionRequired: true,
+      category: "Antibiotic"
+    },
+    {
+      salt: "Levocetirizine",
+      form: "tablet",
+      strength: "5 mg",
+      packSize: "Strip of 10 tablets",
+      manufacturer: "PX Allergy Care",
+      mrp: 28,
+      prescriptionRequired: false,
+      category: "Allergy"
+    },
+    {
+      salt: "Montelukast",
+      form: "tablet",
+      strength: "10 mg",
+      packSize: "Strip of 10 tablets",
+      manufacturer: "PX Allergy Care",
+      mrp: 135,
+      prescriptionRequired: true,
+      category: "Respiratory"
+    },
+    {
+      salt: "Pantoprazole",
+      form: "tablet",
+      strength: "40 mg",
+      packSize: "Strip of 10 tablets",
+      manufacturer: "PX Life Sciences",
+      mrp: 110,
+      prescriptionRequired: true,
+      category: "Acidity"
+    },
+    {
+      salt: "Rabeprazole",
+      form: "tablet",
+      strength: "20 mg",
+      packSize: "Strip of 15 tablets",
+      manufacturer: "PX Life Sciences",
+      mrp: 145,
+      prescriptionRequired: true,
+      category: "Acidity"
+    },
+    {
+      salt: "Cholecalciferol",
+      form: "supplement",
+      strength: "60,000 IU",
+      packSize: "Strip of 8 softgels",
+      manufacturer: "PX Nutrition",
+      mrp: 420,
+      prescriptionRequired: false,
+      category: "Supplements"
+    },
+    {
+      salt: "Ferrous Ascorbate + Folic Acid",
+      form: "supplement",
+      strength: "Iron + Folic Acid",
+      packSize: "Strip of 15 tablets",
+      manufacturer: "PX Nutrition",
+      mrp: 165,
+      prescriptionRequired: false,
+      category: "Supplements"
+    },
+    {
+      salt: "Salbutamol",
+      form: "injection",
+      strength: "2 mg / 5 ml",
+      packSize: "Bottle of 100 ml",
+      manufacturer: "PX Respiratory",
+      mrp: 90,
+      prescriptionRequired: true,
+      category: "Respiratory"
+    },
+    {
+      salt: "Insulin 30/70",
+      form: "injection",
+      strength: "100 IU/ml",
+      packSize: "Vial of 10 ml",
+      manufacturer: "PX Diabetes Care",
+      mrp: 165,
+      prescriptionRequired: true,
+      category: "Diabetes"
+    }
+  ];
+
+  const PRODUCTS = (() => {
+    const list = [...BASE_PRODUCTS];
+    let id = list.length + 1;
+    while (list.length < 150) { // scalable to much larger datasets
+      const template =
+        PRODUCT_TEMPLATES[(list.length - BASE_PRODUCTS.length) % PRODUCT_TEMPLATES.length];
+      const variantNo = list.length - BASE_PRODUCTS.length + 1;
+      const basePrice = template.mrp;
+      const mrp = +(basePrice * (0.85 + (variantNo % 5) * 0.03)).toFixed(2);
+      const name = `${template.salt} ${template.strength} Generic ${variantNo}`;
+      list.push({
+        id: id++,
+        name,
+        salt: template.salt,
+        form: template.form,
+        strength: template.strength,
+        packSize: template.packSize,
+        manufacturer: template.manufacturer,
+        mrp,
+        prescriptionRequired: template.prescriptionRequired,
+        category: template.category
+      });
+    }
+    return list;
+  })();
+
+  // ============== DATA: LAB TESTS ==============
+  const LAB_TESTS = [
+    {
+      id: 1,
+      name: "Complete Blood Count (CBC)",
+      code: "CBC",
+      category: "full-body",
+      popular: true,
+      mrp: 500,
+      discountPercent: 30,
+      sampleType: "Blood",
+      fastingRequired: "No",
+      tat: "Same day",
+      includes: "Hemoglobin, WBC, Platelet count & more"
+    },
+    {
+      id: 2,
+      name: "Full Body Checkup - Basic",
+      code: "FBCB",
+      category: "full-body",
+      popular: true,
+      mrp: 2499,
+      discountPercent: 40,
+      sampleType: "Blood & Urine",
+      fastingRequired: "10–12 hours",
+      tat: "24 hours",
+      includes: "CBC, LFT, KFT, Lipid, Thyroid, Urine Routine"
+    },
+    {
+      id: 3,
+      name: "Full Body Checkup - Advanced",
+      code: "FBCA",
+      category: "full-body",
+      popular: true,
+      mrp: 3999,
+      discountPercent: 45,
+      sampleType: "Blood & Urine",
+      fastingRequired: "10–12 hours",
+      tat: "24–48 hours",
+      includes: "80+ parameters, vitamin profile & more"
+    },
+    {
+      id: 4,
+      name: "Blood Sugar Fasting",
+      code: "BSF",
+      category: "diabetes",
+      popular: true,
+      mrp: 180,
+      discountPercent: 25,
+      sampleType: "Blood",
+      fastingRequired: "8–10 hours",
+      tat: "Same day",
+      includes: "Glucose - Fasting"
+    },
+    {
+      id: 5,
+      name: "Blood Sugar Fasting & PP",
+      code: "BSFPP",
+      category: "diabetes",
+      popular: true,
+      mrp: 350,
+      discountPercent: 28,
+      sampleType: "Blood",
+      fastingRequired: "Fasting & 2 hours after meal",
+      tat: "Same day",
+      includes: "Glucose - Fasting & Postprandial"
+    },
+    {
+      id: 6,
+      name: "HbA1c (Glycosylated Hemoglobin)",
+      code: "HBA1C",
+      category: "diabetes",
+      popular: true,
+      mrp: 700,
+      discountPercent: 32,
+      sampleType: "Blood",
+      fastingRequired: "No",
+      tat: "Same day",
+      includes: "HbA1c"
+    },
+    {
+      id: 7,
+      name: "Lipid Profile",
+      code: "LIPID",
+      category: "heart",
+      popular: true,
+      mrp: 900,
+      discountPercent: 30,
+      sampleType: "Blood",
+      fastingRequired: "10–12 hours",
+      tat: "Same day",
+      includes: "Cholesterol, HDL, LDL, Triglycerides"
+    },
+    {
+      id: 8,
+      name: "Liver Function Test (LFT)",
+      code: "LFT",
+      category: "full-body",
+      popular: false,
+      mrp: 800,
+      discountPercent: 30,
+      sampleType: "Blood",
+      fastingRequired: "No",
+      tat: "Same day",
+      includes: "SGOT, SGPT, Bilirubin, Proteins"
+    },
+    {
+      id: 9,
+      name: "Kidney Function Test (KFT)",
+      code: "KFT",
+      category: "full-body",
+      popular: false,
+      mrp: 850,
+      discountPercent: 30,
+      sampleType: "Blood",
+      fastingRequired: "8–10 hours",
+      tat: "Same day",
+      includes: "Urea, Creatinine, Uric acid, Electrolytes"
+    },
+    {
+      id: 10,
+      name: "Thyroid Profile (T3, T4, TSH)",
+      code: "THY",
+      category: "full-body",
+      popular: true,
+      mrp: 750,
+      discountPercent: 30,
+      sampleType: "Blood",
+      fastingRequired: "No",
+      tat: "Same day",
+      includes: "T3, T4, TSH"
+    },
+    {
+      id: 11,
+      name: "Vitamin D (25-OH)",
+      code: "VITD",
+      category: "vitamin",
+      popular: true,
+      mrp: 1600,
+      discountPercent: 35,
+      sampleType: "Blood",
+      fastingRequired: "No",
+      tat: "24 hours",
+      includes: "25-Hydroxy Vitamin D"
+    },
+    {
+      id: 12,
+      name: "Vitamin B12",
+      code: "VITB12",
+      category: "vitamin",
+      popular: true,
+      mrp: 1500,
+      discountPercent: 35,
+      sampleType: "Blood",
+      fastingRequired: "6–8 hours (preferred)",
+      tat: "24 hours",
+      includes: "Vitamin B12"
+    },
+    {
+      id: 13,
+      name: "COVID-19 RT-PCR",
+      code: "COVIDPCR",
+      category: "popular",
+      popular: true,
+      mrp: 800,
+      discountPercent: 20,
+      sampleType: "Nasopharyngeal swab",
+      fastingRequired: "No",
+      tat: "24 hours",
+      includes: "SARS-CoV-2 RT-PCR"
+    },
+    {
+      id: 14,
+      name: "Urine Routine & Microscopy",
+      code: "URINE",
+      category: "full-body",
+      popular: false,
+      mrp: 300,
+      discountPercent: 25,
+      sampleType: "Urine",
+      fastingRequired: "No",
+      tat: "Same day",
+      includes: "Routine & microscopic exam"
+    },
+    {
+      id: 15,
+      name: "Cardiac Risk Profile",
+      code: "CRP",
+      category: "heart",
+      popular: true,
+      mrp: 2200,
+      discountPercent: 35,
+      sampleType: "Blood",
+      fastingRequired: "10–12 hours",
+      tat: "24 hours",
+      includes: "Lipid, Homocysteine, hs-CRP & more"
+    },
+    {
+      id: 16,
+      name: "Iron Studies",
+      code: "IRON",
+      category: "vitamin",
+      popular: false,
+      mrp: 1100,
+      discountPercent: 30,
+      sampleType: "Blood",
+      fastingRequired: "8–10 hours",
+      tat: "24 hours",
+      includes: "Serum Iron, TIBC, Ferritin"
+    },
+    {
+      id: 17,
+      name: "Pre-employment Health Check Basic",
+      code: "PREEMPB",
+      category: "full-body",
+      popular: false,
+      mrp: 1999,
+      discountPercent: 30,
+      sampleType: "Blood & Urine",
+      fastingRequired: "10–12 hours",
+      tat: "24–48 hours",
+      includes: "CBC, LFT, KFT, Chest X-ray (partner lab)"
+    },
+    {
+      id: 18,
+      name: "Arthritis Profile Basic",
+      code: "ARTH",
+      category: "popular",
+      popular: false,
+      mrp: 1800,
+      discountPercent: 30,
+      sampleType: "Blood",
+      fastingRequired: "No",
+      tat: "24–48 hours",
+      includes: "RA Factor, CRP, ESR & more"
+    }
+  ];
+
+  // ============== CART STATE ==============
+  const cart = {}; // key: m-<id> or l-<id>
+
+  // Pagination state
+  const MED_PAGE_SIZE = 24;
+  const LAB_PAGE_SIZE = 16;
+  let medPage = 1;
+  let labPage = 1;
+
+  // ============== FILTER HELPERS ==============
+  function getFilteredMedicines() {
+    const searchTerm = document.getElementById("medSearchInput").value.trim().toLowerCase();
+    const activeFilterBtn = document.querySelector("#medFilterTabs .filter-tab.active");
+    const activeFilter = activeFilterBtn ? activeFilterBtn.dataset.medFilter : "all";
+    const sortValue = document.getElementById("medSortSelect").value;
+
+    let list = PRODUCTS.filter((p) => {
+      const matchesForm = activeFilter === "all" || p.form === activeFilter;
+      const text = (p.name + " " + p.salt + " " + p.category + " " + p.manufacturer).toLowerCase();
+      const matchesSearch = !searchTerm || text.includes(searchTerm);
+      return matchesForm && matchesSearch;
+    });
+
+    if (sortValue === "price-low") {
+      list.sort((a, b) => discountedMedicinePrice(a.mrp) - discountedMedicinePrice(b.mrp));
+    } else if (sortValue === "price-high") {
+      list.sort((a, b) => discountedMedicinePrice(b.mrp) - discountedMedicinePrice(a.mrp));
+    } else if (sortValue === "name-az") {
+      list.sort((a, b) => a.name.localeCompare(b.name));
+    }
+    return list;
+  }
+
+  function getFilteredLabTests() {
+    const searchTerm = document.getElementById("labSearchInput").value.trim().toLowerCase();
+    const activeFilterBtn = document.querySelector("#labFilterTabs .filter-tab.active");
+    const activeFilter = activeFilterBtn ? activeFilterBtn.dataset.labFilter : "all";
+    const sortValue = document.getElementById("labSortSelect").value;
+
+    let list = LAB_TESTS.filter((t) => {
+      const matchesCategory =
+        activeFilter === "all" ||
+        t.category === activeFilter ||
+        (activeFilter === "popular" && t.popular);
+
+      const text = (t.name + " " + t.code + " " + t.includes + " " + t.category).toLowerCase();
+      const matchesSearch = !searchTerm || text.includes(searchTerm);
+      return matchesCategory && matchesSearch;
+    });
+
+    if (sortValue === "price-low") {
+      list.sort(
+        (a, b) =>
+          discountedLabPrice(a.mrp, a.discountPercent) -
+          discountedLabPrice(b.mrp, b.discountPercent)
+      );
+    } else if (sortValue === "price-high") {
+      list.sort(
+        (a, b) =>
+          discountedLabPrice(b.mrp, b.discountPercent) -
+          discountedLabPrice(a.mrp, a.discountPercent)
+      );
+    } else if (sortValue === "name-az") {
+      list.sort((a, b) => a.name.localeCompare(b.name));
+    }
+    return list;
+  }
+
+  // ============== PAGINATION RENDER ==============
+  function renderPagination(containerId, totalItems, currentPage, pageSize) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = "";
+    const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
+    if (totalPages <= 1) return;
+
+    const prevBtn = document.createElement("button");
+    prevBtn.className = "page-btn" + (currentPage === 1 ? " disabled" : "");
+    prevBtn.textContent = "Prev";
+    if (currentPage > 1) prevBtn.dataset.page = String(currentPage - 1);
+    container.appendChild(prevBtn);
+
+    const info = document.createElement("span");
+    info.className = "page-info";
+    info.textContent = `Page ${currentPage} of ${totalPages}`;
+    container.appendChild(info);
+
+    const nextBtn = document.createElement("button");
+    nextBtn.className = "page-btn" + (currentPage === totalPages ? " disabled" : "");
+    nextBtn.textContent = "Next";
+    if (currentPage < totalPages) nextBtn.dataset.page = String(currentPage + 1);
+    container.appendChild(nextBtn);
+  }
+
+  // ============== RENDER: MEDICINES ==============
+  function renderMedicines(page) {
+    if (page) medPage = page;
+    const grid = document.getElementById("medProductGrid");
+    const list = getFilteredMedicines();
+    const total = list.length;
+    const pageSize = MED_PAGE_SIZE;
+    const totalPages = Math.max(1, Math.ceil(total / pageSize));
+    if (medPage > totalPages) medPage = totalPages;
+
+    const startIndex = (medPage - 1) * pageSize;
+    const pageItems = list.slice(startIndex, startIndex + pageSize);
+
+    document.getElementById("medProductCount").textContent = String(total);
+
+    grid.innerHTML = "";
+    pageItems.forEach((p, index) => {
+      const node = document.createElement("article");
+      node.className = "product-card";
+      node.style.transitionDelay = `${index * 20}ms`;
+
+      const mrp = p.mrp;
+      const price = discountedMedicinePrice(mrp);
+      const savings = mrp - price;
+
+      node.innerHTML = `
+        <div class="product-img-wrap">
+          <div class="product-img-pill"></div>
+        </div>
+        <div class="product-body">
+          <div class="product-title" title="${p.name}">${p.name}</div>
+          <div class="product-sub">${p.salt} • ${p.strength}</div>
+          <div class="product-sub">${p.packSize}</div>
+          <div class="product-tags">
+            <span class="tag">${p.category}</span>
+            <span class="tag">${p.form.charAt(0).toUpperCase() + p.form.slice(1)}</span>
+            ${p.prescriptionRequired ? '<span class="tag rx">Rx Required</span>' : '<span class="tag">OTC</span>'}
+          </div>
+          <div class="price-row">
+            <div class="price-stack">
+              <span class="price-now">${formatCurrency(price)}</span>
+              <span class="price-mrp">MRP ${formatCurrency(mrp)}</span>
+              <span class="price-save">You save ${formatCurrency(savings)}</span>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.25rem;">
+              <span class="discount-pill">20% OFF</span>
+              <button class="add-btn" type="button" data-type="medicine" data-id="${p.id}">
+                <span>ADD</span>
+                <span>＋</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      grid.appendChild(node);
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          node.classList.add("visible");
         });
+      });
+    });
 
-        itemsCountSpan.textContent = items
-          .reduce((sum, i) => sum + i.qty, 0)
-          .toString();
+    renderPagination("medPagination", total, medPage, pageSize);
+  }
 
-        // attach qty handlers
-        body.querySelectorAll(".qty-btn").forEach((btn) => {
-          const id = parseInt(btn.dataset.id, 10);
-          const delta = parseInt(btn.dataset.delta, 10);
-          btn.addEventListener("click", () => updateQty(id, delta));
+  // ============== RENDER: LAB TESTS ==============
+  function renderLabTests(page) {
+    if (page) labPage = page;
+    const grid = document.getElementById("labTestGrid");
+    const list = getFilteredLabTests();
+    const total = list.length;
+    const pageSize = LAB_PAGE_SIZE;
+    const totalPages = Math.max(1, Math.ceil(total / pageSize));
+    if (labPage > totalPages) labPage = totalPages;
+
+    const startIndex = (labPage - 1) * pageSize;
+    const pageItems = list.slice(startIndex, startIndex + pageSize);
+
+    document.getElementById("labTestCount").textContent = String(total);
+
+    grid.innerHTML = "";
+    pageItems.forEach((t, index) => {
+      const node = document.createElement("article");
+      node.className = "product-card";
+      node.style.transitionDelay = `${index * 20}ms`;
+
+      const mrp = t.mrp;
+      const price = discountedLabPrice(mrp, t.discountPercent);
+      const savings = mrp - price;
+
+      node.innerHTML = `
+        <div class="product-img-wrap">
+          <div class="product-img-pill"></div>
+        </div>
+        <div class="product-body">
+          <div class="product-title" title="${t.name}">${t.name}</div>
+          <div class="product-sub">${t.code} • Home sample collection</div>
+          <div class="product-sub">${t.includes}</div>
+          <div class="lab-spec-row">
+            <span class="lab-spec-pill">Sample: ${t.sampleType}</span>
+            <span class="lab-spec-pill">Fasting: ${t.fastingRequired}</span>
+            <span class="lab-spec-pill">TAT: ${t.tat}</span>
+          </div>
+          <div class="product-tags">
+            <span class="tag lab">Lab Test</span>
+            <span class="tag">
+              ${t.category === "full-body" ? "Full body" :
+                t.category === "diabetes" ? "Diabetes" :
+                t.category === "heart" ? "Heart" :
+                t.category === "vitamin" ? "Vitamins" : "Popular"}
+            </span>
+            ${t.popular ? '<span class="tag">Trending</span>' : ""}
+          </div>
+          <div class="lab-powered-inline">
+            Powered by <span>ALBION DIAGNOSTICS &amp; LABS</span>
+          </div>
+          <div class="price-row">
+            <div class="price-stack">
+              <span class="price-now">${formatCurrency(price)}</span>
+              <span class="price-mrp">MRP ${formatCurrency(mrp)}</span>
+              <span class="price-save">You save ${formatCurrency(savings)}</span>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.25rem;">
+              <span class="discount-pill">${t.discountPercent}% OFF</span>
+              <button class="add-btn" type="button" data-type="lab" data-id="${t.id}">
+                <span>ADD</span>
+                <span>＋</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      grid.appendChild(node);
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          node.classList.add("visible");
         });
+      });
+    });
 
-        const savings = totalMrp - totalPayable;
-        document.getElementById("cartTotal").textContent = formatCurrency(totalPayable);
-        document.getElementById("cartMrp").textContent = formatCurrency(totalMrp);
-        document.getElementById("cartSavings").textContent = formatCurrency(savings);
+    renderPagination("labPagination", total, labPage, pageSize);
+  }
+
+  // ============== CART FUNCTIONS ==============
+  function addToCart(type, id) {
+    const key = itemKey(type, id);
+    if (!cart[key]) {
+      if (type === "medicine") {
+        const product = PRODUCTS.find((p) => p.id === id);
+        if (!product) return;
+        cart[key] = { type, id, qty: 1, product };
+      } else {
+        const test = LAB_TESTS.find((t) => t.id === id);
+        if (!test) return;
+        cart[key] = { type, id, qty: 1, test };
       }
+    } else {
+      cart[key].qty += 1;
+    }
+    renderCart();
+  }
+
+  function updateQty(key, delta) {
+    if (!cart[key]) return;
+    cart[key].qty += delta;
+    if (cart[key].qty <= 0) {
+      delete cart[key];
+    }
+    renderCart();
+  }
+
+  function renderCart() {
+    const body = document.getElementById("cartBody");
+    const items = Object.values(cart);
+    const itemsCountSpan = document.getElementById("cartItemsCount");
+
+    if (!items.length) {
+      body.innerHTML =
+        '<div class="cart-empty">No items yet. Add medicines or lab tests to see your savings!</div>';
+      itemsCountSpan.textContent = "0";
+      document.getElementById("cartMedSubtotal").textContent = "₹0.00";
+      document.getElementById("cartLabSubtotal").textContent = "₹0.00";
+      document.getElementById("cartTotal").textContent = "₹0.00";
+      document.getElementById("cartMrp").textContent = "₹0.00";
+      document.getElementById("cartSavings").textContent = "₹0.00";
+      return;
     }
 
-    // FILTER & SEARCH HANDLERS
-    document.getElementById("filterTabs").addEventListener("click", (e) => {
+    body.innerHTML = "";
+    let totalMrp = 0;
+    let totalPayable = 0;
+    let medPayable = 0;
+    let labPayable = 0;
+
+    items.forEach((item) => {
+      let mrpForQty = 0;
+      let payableForQty = 0;
+      let name, meta, typeLabel;
+
+      if (item.type === "medicine") {
+        const p = item.product;
+        mrpForQty = p.mrp * item.qty;
+        payableForQty = discountedMedicinePrice(p.mrp) * item.qty;
+        name = p.name;
+        meta = p.packSize;
+        typeLabel = "Medicine";
+        medPayable += payableForQty;
+      } else {
+        const t = item.test;
+        mrpForQty = t.mrp * item.qty;
+        payableForQty = discountedLabPrice(t.mrp, t.discountPercent) * item.qty;
+        name = t.name;
+        meta = t.code + " • Home collection";
+        typeLabel = "Lab Test";
+        labPayable += payableForQty;
+      }
+
+      totalMrp += mrpForQty;
+      totalPayable += payableForQty;
+
+      const key = itemKey(item.type, item.id);
+      const itemNode = document.createElement("div");
+      itemNode.className = "cart-item";
+      itemNode.innerHTML = `
+        <div>
+          <div class="cart-item-name">${name}</div>
+          <div class="cart-item-meta">${meta}</div>
+          <div class="cart-item-type-tag">
+            <span class="dot"></span>
+            <span>${typeLabel}</span>
+          </div>
+        </div>
+        <div class="cart-item-controls" data-key="${key}">
+          <button class="qty-btn" data-key="${key}" data-delta="-1">−</button>
+          <span class="cart-qty">${item.qty}</span>
+          <button class="qty-btn" data-key="${key}" data-delta="1">＋</button>
+          <span class="cart-item-price">${formatCurrency(payableForQty)}</span>
+        </div>
+      `;
+      body.appendChild(itemNode);
+    });
+
+    const totalQty = items.reduce((sum, itm) => sum + itm.qty, 0);
+    itemsCountSpan.textContent = totalQty.toString();
+
+    const savings = totalMrp - totalPayable;
+
+    document.getElementById("cartMedSubtotal").textContent = formatCurrency(medPayable);
+    document.getElementById("cartLabSubtotal").textContent = formatCurrency(labPayable);
+    document.getElementById("cartTotal").textContent = formatCurrency(totalPayable);
+    document.getElementById("cartMrp").textContent = formatCurrency(totalMrp);
+    document.getElementById("cartSavings").textContent = formatCurrency(savings);
+  }
+
+  // ============== EVENT WIRING ==============
+  function initTabs() {
+    const tabButtons = document.querySelectorAll(".main-tab");
+    tabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const tab = btn.dataset.tab;
+        document.querySelectorAll(".main-tab").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        document.querySelectorAll(".tab-panel").forEach((panel) => {
+          panel.classList.remove("active");
+        });
+        const panel = document.getElementById("tab-" + tab);
+        if (panel) panel.classList.add("active");
+      });
+    });
+  }
+
+  function initMedicineFilters() {
+    const medFilterTabs = document.getElementById("medFilterTabs");
+    medFilterTabs.addEventListener("click", (e) => {
       const btn = e.target.closest(".filter-tab");
       if (!btn) return;
-      document.querySelectorAll(".filter-tab").forEach((t) => t.classList.remove("active"));
+      medFilterTabs.querySelectorAll(".filter-tab").forEach((t) => t.classList.remove("active"));
       btn.classList.add("active");
-      renderProducts();
+      medPage = 1;
+      renderMedicines(1);
     });
 
-    document.getElementById("sortSelect").addEventListener("change", renderProducts);
-
-    document.getElementById("searchBtn").addEventListener("click", renderProducts);
-    document.getElementById("searchInput").addEventListener("keyup", (e) => {
-      if (e.key === "Enter") renderProducts();
-      // live search feel
-      if (e.key.length === 1 || e.key === "Backspace" || e.key === "Delete") {
-        renderProducts();
-      }
+    document.getElementById("medSortSelect").addEventListener("change", () => {
+      medPage = 1;
+      renderMedicines(1);
+    });
+    document.getElementById("medSearchBtn").addEventListener("click", () => {
+      medPage = 1;
+      renderMedicines(1);
     });
 
-    // Initial render
-    document.getElementById("year").textContent = new Date().getFullYear().toString();
-    renderProducts();
-    renderCart();
-  </script>
+    const medInput = document.getElementById("medSearchInput");
+    medInput.addEventListener(
+      "input",
+      debounce(() => {
+        medPage = 1;
+        renderMedicines(1);
+      }, 250)
+    );
+  }
+
+  function initLabFilters() {
+    const labFilterTabs = document.getElementById("labFilterTabs");
+    labFilterTabs.addEventListener("click", (e) => {
+      const btn = e.target.closest(".filter-tab");
+      if (!btn) return;
+      labFilterTabs.querySelectorAll(".filter-tab").forEach((t) => t.classList.remove("active"));
+      btn.classList.add("active");
+      labPage = 1;
+      renderLabTests(1);
+    });
+
+    document.getElementById("labSortSelect").addEventListener("change", () => {
+      labPage = 1;
+      renderLabTests(1);
+    });
+    document.getElementById("labSearchBtn").addEventListener("click", () => {
+      labPage = 1;
+      renderLabTests(1);
+    });
+
+    const labInput = document.getElementById("labSearchInput");
+    labInput.addEventListener(
+      "input",
+      debounce(() => {
+        labPage = 1;
+        renderLabTests(1);
+      }, 250)
+    );
+  }
+
+  function initAddToCartListeners() {
+    const medGrid = document.getElementById("medProductGrid");
+    const labGrid = document.getElementById("labTestGrid");
+
+    function handleAddClick(e) {
+      const btn = e.target.closest(".add-btn");
+      if (!btn) return;
+      const type = btn.dataset.type;
+      const id = parseInt(btn.dataset.id, 10);
+      if (!type || !id) return;
+      addToCart(type, id);
+    }
+
+    medGrid.addEventListener("click", handleAddClick);
+    labGrid.addEventListener("click", handleAddClick);
+  }
+
+  function initCartListeners() {
+    const body = document.getElementById("cartBody");
+    body.addEventListener("click", (e) => {
+      const btn = e.target.closest(".qty-btn");
+      if (!btn) return;
+      const key = btn.dataset.key;
+      const delta = parseInt(btn.dataset.delta, 10);
+      if (!key || !delta) return;
+      updateQty(key, delta);
+    });
+  }
+
+  function initPaginationListeners() {
+    document.getElementById("medPagination").addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-page]");
+      if (!btn) return;
+      const page = parseInt(btn.dataset.page, 10);
+      if (!isNaN(page)) renderMedicines(page);
+    });
+
+    document.getElementById("labPagination").addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-page]");
+      if (!btn) return;
+      const page = parseInt(btn.dataset.page, 10);
+      if (!isNaN(page)) renderLabTests(page);
+    });
+  }
+
+  function initGlobalSearch() {
+    const globalInput = document.getElementById("globalSearch");
+    const applyGlobalSearch = () => {
+      const value = globalInput.value.trim();
+      document.getElementById("medSearchInput").value = value;
+      document.getElementById("labSearchInput").value = value;
+      medPage = 1;
+      labPage = 1;
+      renderMedicines(1);
+      renderLabTests(1);
+    };
+
+    globalInput.addEventListener("input", debounce(applyGlobalSearch, 250));
+  }
+
+  // ============== INIT ==============
+  document.getElementById("year").textContent = new Date().getFullYear().toString();
+
+  initTabs();
+  initMedicineFilters();
+  initLabFilters();
+  initAddToCartListeners();
+  initCartListeners();
+  initPaginationListeners();
+  initGlobalSearch();
+
+  renderMedicines(1);
+  renderLabTests(1);
+  renderCart();
+</script>
 </body>
 </html>
